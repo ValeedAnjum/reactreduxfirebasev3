@@ -8,11 +8,12 @@ import 'firebase/auth';
 import 'firebase/firestore';
 import createStore from './store';
 import Home from './Home';
-import registerServiceWorker from './registerServiceWorker';
-import * as config from 'config';
+// import registerServiceWorker from './registerServiceWorker'; 
+import * as config from './config';
+import Login from './components/Login/Login';
 
 // Initialize Firebase instance
-firebase.initializeApp(config.firebase || process.env.REACT_APP_FIREBASE_CONFIG)
+firebase.initializeApp(config.fbConfig || process.env.REACT_APP_FIREBASE_CONFIG)
 
 const styles = {
   fontFamily: 'sans-serif',
@@ -30,7 +31,7 @@ function App() {
         config={config.rfConfig}
         dispatch={store.dispatch}
         createFirestoreInstance={createFirestoreInstance}>
-        <Home />
+        <Login />
       </ReactReduxFirebaseProvider>
     </Provider>
   );
